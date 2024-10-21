@@ -9,5 +9,14 @@ import { Component } from '@angular/core';
 })
 export class StddevComponent {
 
+  calculateStdDev(data: number[]): number {
+    const mean = this.calculateMean(data);
+    const variance = data.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / data.length;
+    return Math.sqrt(variance);
+  }
 
+  calculateMean(data: number[]): number {
+    const sum = data.reduce((acc, val) => acc + val, 0);
+    return sum / data.length;
+  }
 }
