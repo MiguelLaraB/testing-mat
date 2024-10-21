@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Stddev } from '../classes/stddev';
 
 @Component({
   selector: 'app-stddev',
@@ -9,18 +10,14 @@ import { Component } from '@angular/core';
 })
 export class StddevComponent {
 
-<<<<<<< HEAD
-  calculateStdDev(data: number[]): number {
-    const mean = this.calculateMean(data);
-    const variance = data.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / data.length;
-    return Math.sqrt(variance);
+  stddev: Stddev;
+
+  constructor() {
+    this.stddev = new Stddev();
   }
 
-  calculateMean(data: number[]): number {
-    const sum = data.reduce((acc, val) => acc + val, 0);
-    return sum / data.length;
+  getStddev(array: number[]): number {
+    console.log(this.stddev.calcularStddev(array));
+    return this.stddev.calcularStddev(array);
   }
-=======
-
->>>>>>> 3bdeefb1b3563c3c490a8fefe952a85296ba8862
 }

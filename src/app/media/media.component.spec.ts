@@ -3,23 +3,31 @@ import { MediaComponent } from './media.component';
 
 describe('MediaComponent', () => {
   let component: MediaComponent;
-  let fixture: ComponentFixture<MediaComponent>;
+  let fixture: ComponentFixture<MediaComponent>; 
+  let media = new MediaComponent();
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [MediaComponent] // Usa imports en lugar de declarations
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [MediaComponent]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(MediaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should display correct mean values for both columns', () => {
-    spyOn(console, 'log');
-    component.displayResults();
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-    // Remueve la comparación estricta de cadenas y sólo verifica que se está llamando a console.log
-    expect(console.log).toHaveBeenCalledWith(jasmine.any(String)); // Acepta cualquier valor en el log
+  it('Should return media = 550.6 with test 1', () => {
+    const result = media.getMedia([160, 591, 114, 229, 230, 270, 128, 1657, 624, 1503]);
+    expect(result).toBe(550.6);
+  });
+
+  it('Should return media = 60.32 with test 2', () => {
+    const result = media.getMedia([15.0, 69.9, 6.5, 22.4, 28.4, 65.9, 19.4, 198.7, 38.8, 138.2]);
+    expect(result).toBe(60.32);
   });
 });
