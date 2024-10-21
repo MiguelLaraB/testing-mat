@@ -8,6 +8,7 @@ import { Stddev } from '../classes/stddev';
   templateUrl: './stddev.component.html',
   styleUrl: './stddev.component.css'
 })
+
 export class StddevComponent {
 
   stddev: Stddev;
