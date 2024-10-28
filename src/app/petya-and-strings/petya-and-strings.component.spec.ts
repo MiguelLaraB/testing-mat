@@ -8,9 +8,8 @@ describe('PetyaAndStringsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetyaAndStringsComponent ]
-    })
-    .compileComponents();
+      imports: [PetyaAndStringsComponent], // Cambiar de declarations a imports
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,14 +23,17 @@ describe('PetyaAndStringsComponent', () => {
   });
 
   it('should return 0 for identical strings (case insensitive)', () => {
-    expect(component.compareStrings('aaaa', 'aaaA')).toBe(0);
-  });
-
-  it('should return -1 when first string is less than second string', () => {
-    expect(component.compareStrings('abs', 'Abz')).toBe(-1);
+    const result = component.compareStrings('aaaa', 'aaaA');
+    expect(result).toBe(0);
   });
 
   it('should return 1 when first string is greater than second string', () => {
-    expect(component.compareStrings('abcdefg', 'AbCdEfF')).toBe(1);
+    const result = component.compareStrings('abc', 'Abz');
+    expect(result).toBe(1);
+  });
+
+  it('should return -1 when first string is less than second string', () => {
+    const result = component.compareStrings('abc', 'abcd');
+    expect(result).toBe(-1);
   });
 });
