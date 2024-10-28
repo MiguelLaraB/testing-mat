@@ -8,7 +8,7 @@ describe('BlackSquareComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BlackSquareComponent]
+      imports: [BlackSquareComponent]
     });
     fixture = TestBed.createComponent(BlackSquareComponent);
     component = fixture.componentInstance;
