@@ -4,12 +4,16 @@ import { SerejaAndDimaComponent } from './sereja-and-dima.component';
 
 describe('SerejaAndDimaComponent', () => {
   let component: SerejaAndDimaComponent;
+  let fixture: ComponentFixture<SerejaAndDimaComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SerejaAndDimaComponent]
-    });
-    component = TestBed.createComponent(SerejaAndDimaComponent).componentInstance;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [SerejaAndDimaComponent], // Use imports instead of declarations
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(SerejaAndDimaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
