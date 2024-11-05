@@ -10,6 +10,13 @@ import { LinearRegression } from '../classes/linear_regression';
 })
 export class LinearRegressionComponent {
 
+  inputArray1: string = '';
+  inputArray2: string = '';
+  xValue: number | null = null;
+  b0: number = 0;
+  b1: number = 0;
+  result: number | null = null;
+
   linearRegression: LinearRegression;
   sumX = 0;
   sumY = 0;
@@ -54,6 +61,20 @@ export class LinearRegressionComponent {
     this.getDataOfLinearregression(array1, array2);
     yk = this.linearRegression.YK(this.getB0(array1, array2), this.getB1(array1, array2), x);
     return yk;
+  }
+
+  calculate() {
+    // Convertir las cadenas de entrada en arreglos de números
+    const array1 = this.inputArray1.split(',').map(num => parseFloat(num.trim()));
+    const array2 = this.inputArray2.split(',').map(num => parseFloat(num.trim()));
+
+    if (this.xValue !== null) {
+      this.b1 = this.getB1(array1, array2);
+      this.b0 = this.getB0(array1, array2);
+      this.result = this.getYK(array1, array2, this.xValue);
+    } else {
+      alert('Por favor, ingresa un valor válido para X.');
+    }
   }
 
 }

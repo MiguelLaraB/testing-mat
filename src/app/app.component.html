@@ -1,24 +1,40 @@
-<div *ngIf="currentMenu === 'main'">
-  <button (click)="mostrarMenu('1a')">1a</button>
-  <button (click)="mostrarMenu('main')">3a</button>
-  <button (click)="mostrarMenu('main')">5a</button>
-</div>
-
-<div *ngIf="currentMenu === '1a'">
-  <div class="button-container">
-    <button (click)="calcular()">Calcular</button>
+<section class="header">
+  <div id="nav_bar">
+    <button
+      routerLink="/media"
+    >
+      Media
+    </button>
+    <button
+      routerLink="/stddev"
+    >
+      Standard Deviation
+    </button>
+    <button
+      routerLink="/correlation"
+    >
+      Correlation
+    </button>
+    <button
+      routerLink="/linear-regression"
+    >
+      Linear Regression
+    </button>
+    <button
+      routerLink="/simpson"
+    >
+      Simpson
+    </button>
+    <button
+      routerLink="/tstudent"
+    >
+      T-Student
+    </button>
   </div>
+</section>
 
-  <div class="input-container">
-    <div style="margin: 20px;">
-      <input type="text" 
-             [(ngModel)]="inputValores" 
-             placeholder="Ingresa 10 números separados por coma" />
-    </div>
+<section class="body">
+  <div id="container">
+    <router-outlet></router-outlet>
   </div>
-
-  <div class="result-container">
-    <p *ngIf="resultadoMedia !== null">Media: {{ resultadoMedia }}</p>
-    <p *ngIf="resultadoStddev !== null">Desviación Estándar: {{ resultadoStddev }}</p>
-  </div>
-</div>
+</section>
