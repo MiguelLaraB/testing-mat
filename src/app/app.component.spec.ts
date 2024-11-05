@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
 
@@ -8,6 +10,16 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            // Simula datos del ActivatedRoute, ajusta esto según tus necesidades
+            snapshot: { params: {} },
+            params: of({})  // para observables de parámetros
+          }
+        }
+      ]
     }).compileComponents();
 
     const fixture = TestBed.createComponent(AppComponent);
