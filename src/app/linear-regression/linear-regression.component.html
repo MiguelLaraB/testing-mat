@@ -1,4 +1,3 @@
-<!-- linear-regression.component.html -->
 <div class="linear-regression-container">
     <h2>Linear Regression Calculator</h2>
     
@@ -13,17 +12,17 @@
     </div>
     
     <div>
-      <label for="xValue">Valor de X:</label>
+      <label for="xValue">Valor de X (opcional para calcular YK):</label>
       <input type="number" id="xValue" [(ngModel)]="xValue" placeholder="Ejemplo: 2.5">
     </div>
   
     <button (click)="calculate()">Calcular</button>
   
-    <div *ngIf="result !== null">
+    <div *ngIf="b0 !== 0 || b1 !== 0">
       <h3>Resultados:</h3>
-      <p>B0: {{ b0 }}</p>
-      <p>B1: {{ b1 }}</p>
-      <p>YK: {{ result }}</p>
+      <p><strong>B0:</strong> {{ b0 }}</p>
+      <p><strong>B1:</strong> {{ b1 }}</p>
+      <p *ngIf="xValue !== null"><strong>YK:</strong> {{ result }}</p>
+      <p *ngIf="xValue === null"><em>Ingresa un valor para X para calcular YK.</em></p>
     </div>
-  </div>
-  
+</div>
