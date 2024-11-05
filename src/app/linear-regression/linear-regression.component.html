@@ -1,1 +1,29 @@
-<p>linear-regression works!</p>
+<!-- linear-regression.component.html -->
+<div class="linear-regression-container">
+    <h2>Linear Regression Calculator</h2>
+    
+    <div>
+      <label for="array1">Array 1 (números separados por comas):</label>
+      <input type="text" id="array1" [(ngModel)]="inputArray1" placeholder="Ejemplo: 1, 2, 3">
+    </div>
+    
+    <div>
+      <label for="array2">Array 2 (números separados por comas):</label>
+      <input type="text" id="array2" [(ngModel)]="inputArray2" placeholder="Ejemplo: 4, 5, 6">
+    </div>
+    
+    <div>
+      <label for="xValue">Valor de X:</label>
+      <input type="number" id="xValue" [(ngModel)]="xValue" placeholder="Ejemplo: 2.5">
+    </div>
+  
+    <button (click)="calculate()">Calcular</button>
+  
+    <div *ngIf="result !== null">
+      <h3>Resultados:</h3>
+      <p>B0: {{ b0 }}</p>
+      <p>B1: {{ b1 }}</p>
+      <p>YK: {{ result }}</p>
+    </div>
+  </div>
+  
