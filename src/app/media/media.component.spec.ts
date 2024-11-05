@@ -30,4 +30,18 @@ describe('MediaComponent', () => {
     const result = media.getMedia([15.0, 69.9, 6.5, 22.4, 28.4, 65.9, 19.4, 198.7, 38.8, 138.2]);
     expect(result).toBe(60.32);
   });
+
+  
+  describe('displayResults', () => {
+    let consoleSpy: jasmine.Spy;
+
+    beforeEach(() => {
+      consoleSpy = spyOn(console, 'log');
+    });
+
+    it('should log "Calculando medias..."', () => {
+      component.displayResults();
+      expect(consoleSpy).toHaveBeenCalledWith("Calculando medias...");
+    });
+  });
 });

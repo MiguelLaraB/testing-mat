@@ -19,4 +19,8 @@ export class MediaComponent {
   getMedia(array: number[]): number {
     return this.media.calcularMedia(array);
   }
+
+  displayResults() {
+    console.log("Calculando medias..."); // Puedes añadir la lógica de cálculo aquí o simplemente este mensaje.
+  }
 }
