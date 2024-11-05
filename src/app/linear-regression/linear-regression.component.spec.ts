@@ -86,4 +86,60 @@ describe('LinearRegressionComponent', () => {
     const result = linearRegression.getYK([163, 765, 141, 166, 137, 355, 136, 1206, 433, 1130], [15.0, 69.9, 6.5, 22.4, 28.4, 65.9, 19.4, 198.7, 38.8, 138.2], 386);
     expect(result).toBeCloseTo(49.4994, 2);
   });
+
+  describe('when xValue is provided', () => {
+    it('should calculate b0, b1, and YK values', () => {
+      component.inputArray1 = '1, 2, 3';
+      component.inputArray2 = '4, 5, 6';
+      component.xValue = 2.5;
+
+      spyOn(component, 'getB1').and.callThrough();
+      spyOn(component, 'getB0').and.callThrough();
+      spyOn(component, 'getYK').and.callThrough();
+
+      component.calculate();
+
+      expect(component.getB1).toHaveBeenCalledWith([1, 2, 3], [4, 5, 6]);
+      expect(component.getB0).toHaveBeenCalledWith([1, 2, 3], [4, 5, 6]);
+      expect(component.getYK).toHaveBeenCalledWith([1, 2, 3], [4, 5, 6], 2.5);
+      expect(component.b0).toBeDefined();
+      expect(component.b1).toBeDefined();
+      expect(component.result).toBeDefined();
+    });
+  });
+
+  describe('when xValue is null', () => {
+    it('should calculate b0 and b1 but set result to null', () => {
+      component.inputArray1 = '1, 2, 3';
+      component.inputArray2 = '4, 5, 6';
+      component.xValue = null;
+
+      spyOn(component, 'getB1').and.callThrough();
+      spyOn(component, 'getB0').and.callThrough();
+      spyOn(component, 'getYK').and.callThrough();
+
+      component.calculate();
+
+      expect(component.getB1).toHaveBeenCalledWith([1, 2, 3], [4, 5, 6]);
+      expect(component.getB0).toHaveBeenCalledWith([1, 2, 3], [4, 5, 6]);
+      expect(component.getYK).not.toHaveBeenCalled();  // YK no debe ser llamado
+      expect(component.b0).toBeDefined();
+      expect(component.b1).toBeDefined();
+      expect(component.result).toBeNull();
+    });
+  });
+
+  describe('when input arrays contain invalid data', () => {
+    it('should handle invalid input gracefully by setting result to NaN', () => {
+      component.inputArray1 = 'a, b, c';
+      component.inputArray2 = 'd, e, f';
+      component.xValue = 2.5;
+
+      component.calculate();
+
+      expect(component.b0).toBeNaN();
+      expect(component.b1).toBeNaN();
+      expect(component.result).toBeNaN();
+    });
+  });
 });
