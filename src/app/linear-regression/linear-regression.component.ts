@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
 import { LinearRegression } from '../classes/linear_regression';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-linear-regression',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './linear-regression.component.html',
   styleUrl: './linear-regression.component.css'
 })
 export class LinearRegressionComponent {
+
+  inputArray1: string = '';
+  inputArray2: string = '';
+  xValue: number | null = null;
+  b0: number = 0;
+  b1: number = 0;
+  result: number | null = null;
 
   linearRegression: LinearRegression;
   sumX = 0;
@@ -56,4 +65,20 @@ export class LinearRegressionComponent {
     return yk;
   }
 
+  calculate() {
+    // Convertir las cadenas de entrada en arreglos de números
+    const array1 = this.inputArray1.split(',').map(num => parseFloat(num.trim()));
+    const array2 = this.inputArray2.split(',').map(num => parseFloat(num.trim()));
+
+    // Calcular b0 y b1 independientemente de si xValue tiene valor o no
+    this.b1 = this.getB1(array1, array2);
+    this.b0 = this.getB0(array1, array2);
+
+    // Si xValue tiene valor, calcula YK
+    if (this.xValue !== null) {
+      this.result = this.getYK(array1, array2, this.xValue);
+    } else {
+      this.result = null;  // En caso de que xValue sea nulo, no se calcula YK
+    }
+  }
 }
