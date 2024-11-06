@@ -1,0 +1,22 @@
+<div class="stddev-container">
+    <h2>Calcular Desviación Estándar</h2>
+  
+    <!-- Input para los datos -->
+    <label for="inputArray">Introduce los datos (separados por comas):</label>
+    <input id="inputArray" type="text" [(ngModel)]="inputData" placeholder="Ejemplo: 1,2,3,4,5">
+  
+    <!-- Botón para calcular -->
+    <button (click)="calcularStddev()">Calcular Desviación Estándar</button>
+  
+    <!-- Mostrar el resultado -->
+    <div *ngIf="resultado !== null">
+      <h3>Resultado:</h3>
+      <p>Desviación Estándar: {{ resultado }}</p>
+    </div>
+  
+    <!-- Mensaje de error si no hay datos o si no es válido -->
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+  
