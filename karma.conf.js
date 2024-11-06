@@ -14,10 +14,7 @@ module.exports = function (config) {
     ],
     client: {
       jasmine: {
-        // you can add configuration options for Jasmine here
-        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
-        // for example, you can disable the random execution with `random: false`
-        // or set a specific seed with `seed: 4321`
+        DEFAULT_TIMEOUT_INTERVAL: 30000
       },
     },
     jasmineHtmlReporter: {
@@ -36,10 +33,20 @@ module.exports = function (config) {
      customLaunchers: {
        ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox',
+                '--disable-gpu',
+                '--disable-software-rasterizer',
+                '--disable-dev-shm-usage',  // reduce la memoria compartida
+                '--remote-debugging-port=9222'
+        ]
        }
     },
-    singleRun: false,
-    restartOnFileChange: true
+    singleRun: true,
+    restartOnFileChange: true,
+    browserDisconnectTimeout: 120000, // 10 segundos
+    browserNoActivityTimeout: 120000,
+    captureTimeout: 180000,
+    concurrency: 1,
+    browserDisconnectTolerance: 3,
   });
 };

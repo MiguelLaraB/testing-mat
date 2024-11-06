@@ -32,9 +32,16 @@ describe('factorial test suite', () => {
     })
 
     it('Should return 0 if x is > 15', () => {
-        const result = factorial(15);
+        const result = factorial(16);
         expect(result).toBe(0);
     })
+
+    it('Should return 0 if x is between 6 and 15', () => {
+        for (let i = 6; i <= 15; i++) {
+            const result = factorial(i);
+            expect(result).toBe(0);
+        }
+    });
 })
 
 
