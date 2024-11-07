@@ -1,1 +1,21 @@
-<button (click)="displayResults()">Calcular Medias</button>
+<div class="media-container">
+    <h2>Calcular Media</h2>
+  
+    <!-- Input para los datos -->
+    <label for="inputArray">Introduce 10 números (separados por comas):</label>
+    <input id="inputArray" type="text" [(ngModel)]="inputData" placeholder="Ejemplo: 1,2,3,4,5,6,7,8,9,10">
+    
+    <!-- Botón para calcular -->
+    <button (click)="calcularMedia()">Calcular Media</button>
+  
+    <!-- Mostrar el resultado -->
+    <div *ngIf="resultado !== null">
+      <h3>Resultado:</h3>
+      <p>Media: {{ resultado }}</p>
+    </div>
+  
+    <!-- Mensaje de error si no hay datos o si no es válido -->
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+</div>
