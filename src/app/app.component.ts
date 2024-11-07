@@ -7,12 +7,13 @@ import { LinearRegressionComponent } from './linear-regression/linear-regression
 import { RouterLink } from '@angular/router';
 import { MediaComponent } from './media/media.component';
 import { StddevComponent } from './stddev/stddev.component';
+import { SimpsonComponent } from './simpson/simpson.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterLink, RouterOutlet,CommonModule, FormsModule, CorrelationComponent, LinearRegressionComponent
-    , MediaComponent, StddevComponent],
+    , MediaComponent, StddevComponent, SimpsonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
