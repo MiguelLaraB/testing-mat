@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { TStudent } from '../classes/t-student';
+=======
+import { Tstudent } from '../classes/t-student';
+>>>>>>> develop
 
 @Component({
   selector: 'app-t-student',
   standalone: true,
   imports: [],
   templateUrl: './t-student.component.html',
+<<<<<<< HEAD
   styleUrl: './t-student.component.css'
 })
 export class TStudentComponent {
@@ -17,3 +22,19 @@ export class TStudentComponent {
   }
 
 }
+=======
+  styleUrl: './t-student.component.css',
+})
+export class TstudentComponent {
+  t: Tstudent
+  result: number = 0;
+
+  constructor() {
+    this.t = new Tstudent();
+  }
+
+  getT(dof: number, limiteInferior: number, limiteSuperior: number, numSegmentos: number) {
+    return this.result = this.t.TDistribution(dof, limiteInferior, limiteSuperior, numSegmentos);
+  }
+}
+>>>>>>> develop

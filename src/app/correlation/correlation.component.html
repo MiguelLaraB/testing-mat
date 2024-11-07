@@ -1,1 +1,21 @@
-<p>correlation works!</p>
+<div class="correlation-container">
+    <h2>Calculadora de Correlación</h2>
+    
+    <div>
+      <label for="array1">Array 1 (números separados por comas):</label>
+      <input type="text" id="array1" [(ngModel)]="inputArray1" placeholder="Ejemplo: 1, 2, 3">
+    </div>
+    
+    <div>
+      <label for="array2">Array 2 (números separados por comas):</label>
+      <input type="text" id="array2" [(ngModel)]="inputArray2" placeholder="Ejemplo: 4, 5, 6">
+    </div>
+    
+    <button (click)="calculate()">Calcular</button>
+    
+    <div *ngIf="result !== null">
+      <h3>Resultados:</h3>
+      <p>{{ result }}</p> 
+    </div>
+</div>
+  
