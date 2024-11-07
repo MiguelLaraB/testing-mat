@@ -50,6 +50,24 @@ describe('MediaComponent', () => {
     });
   });
 
+  describe('Validación de calcularMedia', () => {
+    it('debería calcular la media y establecer el resultado correctamente para un dataArray válido', () => {
+      component.inputData = '160, 591, 114, 229, 230, 270, 128, 1657, 624, 1503';
+      component.calcularMedia();
+      
+      expect(component.resultado).toBeCloseTo(550.6, 1);
+      expect(component.errorMessage).toBeNull();  // Verificar que se limpia el mensaje de error
+    });
+
+    it('debería establecer el mensaje de error cuando dataArray es inválido y el resultado debería ser null', () => {
+      component.inputData = '1, 2, 3, 4, 5'; // Menos de 10 números
+      component.calcularMedia();
+
+      expect(component.resultado).toBeNull();
+      expect(component.errorMessage).toBe('Por favor, ingresa exactamente 10 números válidos separados por comas.');
+    });
+  });
+
   it('Should return media = 550.6 with array [160, 591, 114, 229, 230, 270, 128, 1657, 624, 1503]', () => {
     const result = media.getMedia([160, 591, 114, 229, 230, 270, 128, 1657, 624, 1503]);
     expect(result).toBe(550.6);
