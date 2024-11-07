@@ -1,40 +1,33 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { TStudent } from '../classes/t-student';
-=======
-import { Tstudent } from '../classes/t-student';
->>>>>>> develop
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-t-student',
+  selector: 'app-tstudent',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './t-student.component.html',
-<<<<<<< HEAD
-  styleUrl: './t-student.component.css'
-})
-export class TStudentComponent {
-  result: number;
-
-  constructor() {
-    const tStudent = new TStudent();
-    this.result = tStudent.tDistribution(1.1, 9, 6, 0.0001); // Calculamos la distribución t para x=1.1 y dof=9
-  }
-
-}
-=======
   styleUrl: './t-student.component.css',
 })
 export class TstudentComponent {
-  t: Tstudent
-  result: number = 0;
+  t: TStudent
+  dof = 0
+  limiteInferior = 0
+  limiteSuperior = 0
+  numSegmentos = 0
+  result: number | null = null
 
   constructor() {
-    this.t = new Tstudent();
+    this.t = new TStudent();
   }
 
+  calculateTStudent(dof: number, limiteInferior: number, limiteSuperior: number, numSegmentos: number) {
+    this.result = this.getT(dof, limiteInferior, limiteSuperior, numSegmentos);
+  }
+  
   getT(dof: number, limiteInferior: number, limiteSuperior: number, numSegmentos: number) {
-    return this.result = this.t.TDistribution(dof, limiteInferior, limiteSuperior, numSegmentos);
+    this.result = this.t.tDistribution(dof, limiteInferior, limiteSuperior, numSegmentos);
+    return parseFloat(this.result.toFixed(5));
   }
 }
->>>>>>> develop

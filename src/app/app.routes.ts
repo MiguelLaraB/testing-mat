@@ -4,6 +4,7 @@ import { CorrelationComponent } from './correlation/correlation.component';
 import { LinearRegressionComponent } from './linear-regression/linear-regression.component';
 import { StddevComponent } from './stddev/stddev.component';
 import { SimpsonComponent } from './simpson/simpson.component';
+import { TstudentComponent } from './t-student/t-student.component';
 
 export const routes: Routes = [
     { path: 'media', component: MediaComponent },
@@ -11,4 +12,5 @@ export const routes: Routes = [
     { path: 'linear-regression', component: LinearRegressionComponent},
     { path: 'stddev', component: StddevComponent},
     { path: 'simpson', component: SimpsonComponent},
+    { path: 'tstudent', component: TstudentComponent},
 ];
